@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lmy.dao.NoticeMapper">
+    <resultMap id="BaseResultMap" type="com.lmy.entity.Notice" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="date" property="date" jdbcType="TIMESTAMP" />
+        <result column="content" property="content" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!-- 模糊查询 -->
+    <select id="findListByLike" resultMap="BaseResultMap" >
+        select * from notice
+        <where>
+            <if test="_parameter != null and _parameter != ''">
+               and `title` like CONCAT('%',#{_parameter},'%')
+            </if>
+        </where>
+    </select>
+
+    <update id="updateNotice" parameterType="map">
+        update notice
+        <set>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="date != null">
+                date = #{date},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>

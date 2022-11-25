@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="utf-8">
+<!--字体图标-->
+<link href="../javaex/pc/css/icomoon.css" rel="stylesheet" />
+<!--动画-->
+<link href="../javaex/pc/css/animate.css" rel="stylesheet" />
+<!--骨架样式-->
+<link href="../javaex/pc/css/common.css" rel="stylesheet" />
+<!--皮肤（缇娜）-->
+<link href="../javaex/pc/css/skin/tina.css" rel="stylesheet" />
+<!--jquery，不可修改版本-->
+<script src="../javaex/pc/lib/jquery-1.7.2.min.js"></script>
+<!--全局动态修改-->
+<script src="../javaex/pc/js/common.js"></script>
+<!--核心组件-->
+<script src="../javaex/pc/js/javaex.min.js"></script>
+<!--表单验证-->
+<script src="../javaex/pc/js/javaex-formVerify.js"></script>
+<title>图书管理系统-编辑公告</title>
+</head>
+<style>
+    
+</style>
+
+<body>
+    <!--全部主体内容-->
+<div class="list-content">
+	<!--块元素-->
+	<div class="block">
+		<!--修饰块元素名称-->
+		<div class="banner">
+			<p class="tab fixed">编辑公告</p>
+		</div>
+	
+		<!--正文内容-->
+		<div class="main">
+			<form id="form">
+				<!--文本框-->
+				<div class="unit clear">
+					<div class="left"><span class="required">*</span><p class="subtitle">标题</p></div>
+					<div class="right">
+						<input type="text" class="text" id="title" name="title"/>
+					</div>
+				</div>
+				
+				<div class="unit clear">
+					<div class="left"><span class="required">*</span><p class="subtitle">发布时间</p></div>
+					<div class="right">
+						<input type="text" id="date" class="ex-date" value="" readonly/>
+					</div>
+				</div>
+
+				<div class="unit clear">
+					<div class="left"><span class="required">*</span><p class="subtitle">内容</p></div>
+					<div class="right">
+						<textarea class="text" id="content" name="content" rows=12 placeholder="输入公告内容，支持MarkDown语法"></textarea>
+					</div>
+				</div>
+				<br>
+				<br>
+
+				<!--提交按钮-->
+				<div class="unit clear" style="width: 800px;">
+					<div style="text-align: center;">
+						<!--表单提交时，必须是input元素，并指定type类型为button，否则ajax提交时，会返回error回调函数-->
+						<input type="button" id="return" class="button no" value="返回" />
+						<input type="button" id="save" class="button yes" value="保存" />
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script>
+
+
+	javaex.date({
+	    id : "date",	// 承载日期组件的id
+	    isTime : true,
+	    date : "2022-09-15 01:01:01",	// 选择的日期
+	    // 重新选择日期之后返回一个时间对象
+	    callback : function(rtn) {
+	    }
+	});
+
+	// 页面加载执行
+    $(document).ready(function(){
+        var id = getQueryVariable("id");
+        // get读取参数
+        $.get("../notice/detail",{"id": id}, function(data){
+            var notice = data.data;
+            console.log("notice",notice)
+            $("#title").val(notice.title);
+            $("#date").val(notice.date1);
+            $("#content").val(notice.content);
+            return false;
+		});
+	});
+
+	// 监听点击保存按钮事件
+	$("#save").click(function() {
+        var id = getQueryVariable("id");
+		// 表单验证函数
+		var title = $("#title").val();
+		var date = $("#date").val();
+		var content = $("#content").val();
+		if (title == null || title.trim() == "") {
+            javaex.optTip({
+                content : "公告标题不能为空",
+                type : "error"
+            });
+            return false;
+		}
+
+        if (date ==null ||date == "") {
+            javaex.optTip({
+                content : "公告发布时间不能为空",
+                type : "error"
+            });
+			return false;
+        }
+
+        if (content== null || content.trim() == "") {
+            javaex.optTip({
+                content : "公告内容不能为空",
+                type : "error"
+            });
+            return false;
+        }
+   
+		var json = {"id":id,"title":title,"date":date,"content":content};
+		
+		console.log("json",json)
+        $.ajax({
+            //请求方式
+            type : "POST",
+            //请求的媒体类型
+            contentType: "application/json;charset=UTF-8",
+            //请求地址
+            url : "../notice/update",
+            //数据，json字符串
+            data : JSON.stringify(json),
+            //请求成功
+            success : function(result) {
+                console.log(result);
+                // 获取集合属性
+                var data = result.data;
+                var code = result.code;
+
+                if (code == 200) {
+                    javaex.message({
+                        content : "修改信息成功",
+                        type : "success"
+                    });
+
+					// 跳转至列表
+                    setTimeout(function(){window.location.href="../notice/notice-list";},1000)
+                }
+
+            },
+            //请求失败，包含具体的错误信息
+            error : function(e){
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        });
+	});
+
+	// 监听点击返回按钮事件
+	$("#return").click(function() {
+		window.location.href="../notice/notice-list";
+	});
+
+    // 获取地址栏参数
+    function getQueryVariable(variable){
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            if(pair[0] == variable){return pair[1];}
+        }
+        return false;
+    }
+</script>
+</body>
+</html>

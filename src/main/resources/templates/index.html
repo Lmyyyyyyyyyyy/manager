@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="utf-8">
+<!--字体图标-->
+<link href="javaex/pc/css/icomoon.css" rel="stylesheet" />
+<!--动画-->
+<link href="javaex/pc/css/animate.css" rel="stylesheet" />
+<!--骨架样式-->
+<link href="javaex/pc/css/common.css" rel="stylesheet" />
+<!--皮肤（缇娜）-->
+<link href="javaex/pc/css/skin/tina.css" rel="stylesheet" />
+<!--jquery，不可修改版本-->
+<script src="javaex/pc/lib/jquery-1.7.2.min.js"></script>
+<!--全局动态修改-->
+<script src="javaex/pc/js/common.js"></script>
+<!--核心组件-->
+<script src="javaex/pc/js/javaex.min.js"></script>
+<!--表单验证-->
+<script src="javaex/pc/js/javaex-formVerify.js"></script>
+<title>图书管理系统-首页</title>
+<style>
+</style>
+</head>
+<body>
+	<!--顶部导航-->
+	<div class="admin-navbar">
+		<div class="admin-container-fluid clear">
+			<!--logo名称-->
+			<div class="admin-logo">图书管理系统</div>
+
+			<!--右侧-->
+			<ul class="admin-navbar-nav fr">
+				<li><input id="index_role" hidden /> <a href="javascript:;">欢迎您，<span
+						id="login_user"></span></a>
+					<ul class="dropdown-menu" style="right: 10px;">
+						<li><a href="logout">退出当前账号</a></li>
+					</ul></li>
+			</ul>
+		</div>
+	</div>
+
+	<!--主题内容-->
+	<div class="admin-mian" style="margin-bottom: 50px;">
+		<!--左侧菜单-->
+		<div class="admin-aside admin-aside-fixed">
+			<!-- 应用标题  -->
+			<div id="admin-toc" class="admin-toc">
+				<div class="menu-box">
+					<div id="menu" class="menu">
+						<ul id="adminMenu" style="display: none;">
+							<li class="menu-item hover"><a
+								href="javascript:page('welcome');"><i class="icon-home2"></i>首页</a>
+							</li>
+
+							<li class="menu-item"><a href="javascript:;">图书管理<i
+									class="icon-keyboard_arrow_left"></i></a>
+								<ul>
+									<li><a href="javascript:page('book/book-list');">图书列表</a></li>
+									<li><a href="javascript:page('book/book-add');">图书上架</a></li>
+								</ul></li>
+
+							<li class="menu-item"><a href="javascript:;">借阅管理<i
+									class="icon-keyboard_arrow_left"></i></a>
+								<ul>
+									<li><a href="javascript:page('borrow/book-list');">借阅图书</a></li>
+									<li><a href="javascript:page('borrow/back');">归还图书</a></li>
+								</ul></li>
+
+							<li class="menu-item"><a href="javascript:;">用户管理<i
+									class="icon-keyboard_arrow_left"></i></a>
+								<ul>
+									<li><a href="javascript:page('user/user-list');">用户列表</a></li>
+									<li><a href="javascript:page('user/user-add');">用户添加</a></li>
+								</ul></li>
+
+							<li class="menu-item"><a href="javascript:;">公告管理<i
+									class="icon-keyboard_arrow_left"></i></a>
+								<ul>
+									<li><a href="javascript:page('notice/notice-list');">公告列表</a></li>
+									<li><a href="javascript:page('notice/notice-add');">公告发布</a></li>
+								</ul></li>
+
+							<li class="menu-item"><a href="javascript:;">个人中心<i
+									class="icon-keyboard_arrow_left"></i></a>
+								<ul>
+									<li><a href="javascript:page('my/my-info');">个人信息详情</a></li>
+									<li><a href="javascript:page('my/my-update');">个人信息修改</a></li>
+								</ul></li>
+						</ul>
+						<ul id="userMenu" style="display: none;">
+							<li class="menu-item hover"><a
+								href="javascript:page('welcome');"><i class="icon-home2"></i>首页</a>
+							</li>
+
+							<li class="menu-item"><a href="javascript:;">借阅管理<i
+									class="icon-keyboard_arrow_left"></i></a>
+								<ul>
+									<li><a href="javascript:page('borrow/book-list');">借阅图书</a></li>
+									<li><a href="javascript:page('borrow/back');">归还图书</a></li>
+								</ul></li>
+
+							<li class="menu-item"><a href="javascript:;">公告管理<i
+									class="icon-keyboard_arrow_left"></i></a>
+								<ul>
+									<li><a href="javascript:page('notice/notice-list');">公告列表</a></li>
+								</ul></li>
+
+							<li class="menu-item"><a href="javascript:;">个人中心<i
+									class="icon-keyboard_arrow_left"></i></a>
+								<ul>
+									<li><a href="javascript:page('my/my-info');">个人信息详情</a></li>
+									<li><a href="javascript:page('my/my-update');">个人信息修改</a></li>
+								</ul></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--iframe载入内容-->
+		<div class="admin-markdown">
+			<iframe id="page" src="welcome"></iframe>
+		</div>
+	</div>
+
+	<!-- foot -->
+	<div class="admin-footer" style="position: fixed; bottom: 0;">
+		<div class="admin-container-fluid clear"
+			style="line-height: 50px; text-align: center;">gdgm</div>
+	</div>
+	<!-- foot -->
+</body>
+<script>
+
+	var hightUrl = "xxxx";
+	javaex.menu({
+		id : "menu",
+		isAutoSelected : true,
+		key : "",
+		url : hightUrl
+	});
+	
+	$(function() {
+		// 设置左侧菜单高度
+		setMenuHeight();
+	});
+	
+	/**
+	 * 设置左侧菜单高度
+	 */
+	function setMenuHeight() {
+		var height = document.documentElement.clientHeight - $("#admin-toc").offset().top;
+		height = height - 10;
+		$("#admin-toc").css("height", height+"px");
+	}
+	
+	// 控制页面载入
+	function page(url) {
+		$("#page").attr("src", url);
+	}
+
+    $(document).ready(function(){
+        // 页面一加载, 读取登录用户信息
+    	  $.get("user/currUser", function(data){
+  			var user = data.data;
+  			var userId = user.id;
+  			console.log("user",user);
+              if (userId >0) {
+                $("#login_user").text(user.username+"["+user.ident+"]");
+                $("#index_role").val(user.isAdmin);
+                if(user.isAdmin==0){
+                	$("#adminMenu").css("display",'block');
+                	$("#userMenu").css("display",'none');
+                	
+                }
+                else{
+                	$("#adminMenu").css("display",'none');
+                	$("#userMenu").css("display",'block');
+                }
+                
+              }else {
+                  // 找不到用户, 不可进行借阅操作
+                  javaex.message({
+                      content : "登录信息已失效, 请登录后借阅",
+                      type : "error"
+                  });
+              }
+          });
+
+    });
+</script>
+</html>

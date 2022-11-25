@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="utf-8">
+<!--字体图标-->
+<link href="../javaex/pc/css/icomoon.css" rel="stylesheet" />
+<!--动画-->
+<link href="../javaex/pc/css/animate.css" rel="stylesheet" />
+<!--骨架样式-->
+<link href="../javaex/pc/css/common.css" rel="stylesheet" />
+<!--皮肤（缇娜）-->
+<link href="../javaex/pc/css/skin/tina.css" rel="stylesheet" />
+<!--jquery，不可修改版本-->
+<script src="../javaex/pc/lib/jquery-1.7.2.min.js"></script>
+<!--全局动态修改-->
+<script src="../javaex/pc/js/common.js"></script>
+<!--核心组件-->
+<script src="../javaex/pc/js/javaex.min.js"></script>
+<!--表单验证-->
+<script src="../javaex/pc/js/javaex-formVerify.js"></script>
+
+<script src="../javaex/pc/js/marked.min.js"></script>
+<title>图书管理系统-公告详情</title>
+</head>
+
+<body>
+    <!--主体内容-->
+<div class="list-content">
+	<!--块元素-->
+	<div class="block">
+		<!--页面有多个表格时，可以用于标识表格-->
+		<h2>公告详情</h2>
+		<!--右上角的返回按钮-->
+		<a href="javascript:history.back();">
+			<button class="button indigo radius-3" style="position: absolute;right: 20px;top: 16px;"><span class="icon-arrow_back"></span> 返回</button>
+		</a>
+		
+		<!--正文内容-->
+		<div class="main">
+		
+		  <div id="mk"></div>
+		
+		</div>
+    </div>
+</div>
+
+
+<script>
+    // 页面一加载, 展示数据列表, 每页10条
+    $(document).ready(function(){
+        
+    	 var id = getQueryVariable("id");
+         // get读取参数
+         $.get("../notice/detail",{"id": id}, function(data){
+             var notice = data.data;
+             console.log("notice",notice);
+             $("#mk").html(marked(notice.content));
+             return false;
+ 		});
+    	
+    });
+    
+ // 获取地址栏参数
+    function getQueryVariable(variable){
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            if(pair[0] == variable){return pair[1];}
+        }
+        return false;
+    }
+
+</script>
+</body>
+</html>
