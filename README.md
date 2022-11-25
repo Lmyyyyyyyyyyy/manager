@@ -1,7 +1,7 @@
 #### 01 系统介绍
 
 - 系统名称：图书管理系统设计与实现（booksManageBoot）
-- 开发工具：eclipse/idea
+- 开发工具：idea
 - 开发语言：SpringBoot+JavaEx+Java15
 - 数据库：MySql8
 
