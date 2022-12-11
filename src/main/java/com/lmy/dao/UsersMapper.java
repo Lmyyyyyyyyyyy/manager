@@ -7,10 +7,15 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Map;
 
+
 /**
- * @Description
- * @Date 2022/11/24 15:11
- * @Author by Soleil
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
+ * @Description 用户
+ * @author lmylbm
+ * @since 2022-11-24
  */
 @Mapper
 @Component

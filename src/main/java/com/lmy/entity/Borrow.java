@@ -11,9 +11,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * @Description 借阅表
- * @Date 2022/11/24 16:44
- * @Author by Soleil
+ * <p>
+ * 借阅表
+ * </p>
+ *
+ * @author lmylbm
+ * @since 2022-11-24
  */
 @Data
 @NoArgsConstructor

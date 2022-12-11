@@ -25,5 +25,6 @@ spring:
 #配置mybatis
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+#将sql语句打印到控制台
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

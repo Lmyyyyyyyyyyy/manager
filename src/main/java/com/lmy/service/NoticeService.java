@@ -16,9 +16,13 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @Description 用户业务类
-  * @Date 2022/11/24 17:35
- * @Author by Soleil
+ * <p>
+ *  服务类
+ * </p>
+ *
+ * @Description 公告业务类
+ * @author lmylbm
+ * @since 2022-11-24
  */
 @Service
 public class NoticeService{
@@ -44,7 +48,7 @@ public class NoticeService{
 
     /**
        * 编辑公告
-     * @param users 公告对象
+     * @param notice 公告对象
      * @return true or false
      */
     public boolean updateNotice(Notice notice) {

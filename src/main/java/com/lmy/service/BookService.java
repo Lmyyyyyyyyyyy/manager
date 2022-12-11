@@ -19,9 +19,13 @@ import java.util.List;
 import java.util.Optional;
 
 /**
+ * <p>
+ *  服务类
+ * </p>
+ *
  * @Description 图书业务类
- * @Date 2022/11/24 16:35
- * @Author by Soleil
+ * @author lmylbm
+ * @since 2022-11-24
  */
 @Service
 public class BookService {

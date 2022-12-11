@@ -25,9 +25,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Description 用户管理
- * @Date 2022/11/24 15:11
- * @Author by Soleil
+ * <p>
+ *  用户管理
+ * </p>
+ *
+ * @author lmylbm
+ * @since 2022-11-24
  */
 @Api(tags = "用户管理")
 @RestController

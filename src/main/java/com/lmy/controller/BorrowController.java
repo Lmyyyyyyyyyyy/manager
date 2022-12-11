@@ -20,9 +20,12 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @Description 用户管理
- * @Date 2022/11/24 16:44
- * @Author by Soleil
+ * <p>
+ *  用户管理
+ * </p>
+ *
+ * @author lmylbm
+ * @since 2022-11-24
  */
 @Api(tags = "借阅管理")
 @RestController

@@ -7,10 +7,15 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Map;
 
+
 /**
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
  * @Description 图书
- * @Date 2022/11/24 16:35
- * @Author by Soleil
+ * @author lmylbm
+ * @since 2022-11-24
  */
 @Mapper
 @Component

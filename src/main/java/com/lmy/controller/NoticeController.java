@@ -21,9 +21,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Description 公告管理
- * @Date 2022/11/24 17:35
- * @Author by Soleil
+ * <p>
+ *  公告管理
+ * </p>
+ *
+ * @author lmylbm
+ * @since 2022-11-24
  */
 @Api(tags = "公告管理")
 @RestController

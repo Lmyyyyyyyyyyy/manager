@@ -10,9 +10,13 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 /**
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
  * @Description 借阅管理
- * @Date 2022/11/24 16:44
- * @Author by Soleil
+ * @author lmylbm
+ * @since 2022-11-24
  */
 @Mapper
 @Component

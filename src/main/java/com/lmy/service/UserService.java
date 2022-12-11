@@ -24,9 +24,13 @@ import java.util.List;
 import java.util.Optional;
 
 /**
+ * <p>
+ *  服务类
+ * </p>
+ *
  * @Description 用户业务类
- * @Date 2022/11/24 15:11
- * @Author by Soleil
+ * @author lmylbm
+ * @since 2022-11-24
  */
 @Service
 public class UserService implements UserDetailsService{

@@ -12,9 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @Description 用户管理
- * @Date 2022/11/24 16:35
- * @Author by Soleil
+ * <p>
+ *  用户管理
+ * </p>
+ *
+ * @author lmylbm
+ * @since 2022-11-24
  */
 @Api(tags = "图书管理")
 @RestController
