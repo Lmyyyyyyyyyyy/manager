@@ -10,7 +10,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>com.lmy</groupId>
+	<groupId>com.lmylbm</groupId>
 	<artifactId>booksManageBoot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>booksManageBoot</name>
