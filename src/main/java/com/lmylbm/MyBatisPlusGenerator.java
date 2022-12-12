@@ -83,7 +83,7 @@ public class MyBatisPlusGenerator {
 //        strategy.setColumnNaming(NamingStrategy.underline_to_camel);//数据库表字段映射到实体的命名策略, 未指定按照 naming 执行
 ////	    strategy.setCapitalMode(true);			    // 全局大写命名 ORACLE 注意
 ////	    strategy.setTablePrefix("prefix");		    //表前缀
-////	    strategy.setSuperEntityClass("com.stu.domain");	//自定义继承的Entity类全称，带包名
+////	    strategy.setSuperEntityClass("com.lmylbm.entity");	//自定义继承的Entity类全称，带包名
 ////	    strategy.setSuperEntityColumns(new String[] { "test_id", "age" }); 	//自定义实体，公共字段
 //        strategy.setEntityLombokModel(true);        //【实体】是否为lombok模型（默认 false
 //        strategy.setRestControllerStyle(true);        //生成 @RestController 控制器
